@@ -1,0 +1,17 @@
+/*-----------------------------------------------*/
+[data-page-links*=".rm-bg-orange-100"]>.rm-block-main {
+  background: rgba(255, 165, 0, 0.5);
+}
+
+[data-page-links*=".rm-bg-orange-200"]>.rm-block-main {
+  background: rgb(255, 165, 0, 0.7);
+}
+
+[data-page-links*=".rm-bg-orange-300"]>.rm-block-main {
+  background: rgba(255, 165, 0, 1);
+}
+
+/*-----------------------------------------------*/
+[data-page-links*=".rm-bg-blue-100"]>.rm-block-main {
+  background: rgba(15, 83, 191, 0.5);
+}

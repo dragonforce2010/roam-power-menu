@@ -1,0 +1,54 @@
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .roam-block span {
+  background: #FF9800;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .roam-block span {
+  background: #00BCD4;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #00D4B4;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #34A2EFCE;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #FEC950;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #AA58FB;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #3BC1FF;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #009688;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children.rm-block-children .roam-block span {
+  background: #FF5722;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children.rm-block-children .roam-block span {
+  background: #8BC34A;
+  color: black;
+}
+
+.roam-block-container[data-page-links*='.rm-level-bg'] .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .rm-block-children .roam-block span {
+  background: #00BCD4;
+  color: black;
+}
