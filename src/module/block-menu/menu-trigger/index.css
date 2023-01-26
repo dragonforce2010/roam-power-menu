@@ -1,1 +1,5 @@
-.block-menu-trigger {}
+.block-menu-trigger {
+  cursor: pointer;
+  color: orange;
+  margin-left: 2px;
+}

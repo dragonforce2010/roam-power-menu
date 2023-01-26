@@ -1,17 +1,15 @@
 import React from 'react'
 import "./index.css"
 import ReactDOM from 'react-dom'
-import BlockMenuTrigger from './menu-trigger'
+import MenuContainer from './menu-container'
+import { getBlockIdFromHTMLEleId } from '../../roam-sdk/roam'
 
 let lastEle: HTMLElement
 let lastRoot: HTMLElement
-let menuTriger = React.createElement(BlockMenuTrigger)
+let menuTriger = React.createElement(MenuContainer)
 
 const onMouseEnter = (e: MouseEvent) => {
-  let targetEle = (e.target as HTMLElement) 
-  if (targetEle.classList.contains('.rm-block')) return 
-
-  // const ele = (e.target as HTMLElement).closest('.rm-block')
+  const ele = (e.target as HTMLElement).closest('.rm-block') as HTMLElement
 
   let root = document.createElement('div')
 
@@ -20,16 +18,21 @@ const onMouseEnter = (e: MouseEvent) => {
   }
 
   lastRoot = root
-  lastEle = targetEle
+  lastEle = ele
 
-  if (!targetEle) {
+  if (!ele) {
     return
   }
 
+  const currentHoveredBlockId = getBlockIdFromHTMLEleId(ele.id)
+  console.log('ele.id currentHoveredBlockId:', currentHoveredBlockId)
+  window.sessionStorage.setItem('currentHoveredBlockId', currentHoveredBlockId)
+  console.log('get item from session storage', window.sessionStorage.getItem('currentHoveredBlockId'))
+
   ReactDOM.render(menuTriger, root)
   root.style.position = 'fixed'
-  root.style.top = targetEle.getBoundingClientRect().top + 4 + "px" // 4px padding
-  root.style.left = targetEle.getBoundingClientRect().left - 20 + "px"
+  root.style.top = ele.getBoundingClientRect().top + 4 + "px" // 4px padding
+  root.style.right = window.innerWidth - ele.getBoundingClientRect().left - 8 + "px"
 
   document.body.appendChild(root)
 }
@@ -38,7 +41,7 @@ function onload() {
   document.querySelector('.rm-block-children').addEventListener('mouseenter', onMouseEnter, true)
 
 }
-  
+
 function onunload() {
   document.querySelector('.rm-block-children').removeEventListener('mouseenter', onMouseEnter, true)
 }

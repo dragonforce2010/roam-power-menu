@@ -1,0 +1,4 @@
+.block-menu-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
