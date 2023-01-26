@@ -11,11 +11,6 @@ interface MainMenuProps {
 }
 
 const MainMenu: React.FC<MainMenuProps> = () => {
-  const handleGridLayoutTwoColumns = () => {
-    const currentHoveredBlockId = window.sessionStorage.getItem('currentHoveredBlockId')
-    appendTextToBlock(currentHoveredBlockId, '#.rm-grid2')
-  }
-
   return <div className='main-menu'>
     <Menu className={Classes.ELEVATION_1}>
       {/* <MenuItem labelElement={ } onMouseOver={() => { }}></MenuItem> */}
@@ -24,13 +19,13 @@ const MainMenu: React.FC<MainMenuProps> = () => {
       <MenuItem icon="style" text="Style">
         <MenuItem icon="bold" text="background">
           <MenuItem icon="italic" text="Blue" onClick={() => {
-            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), '#.rm-bg-orange-100')
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-bg-orange-100')
           }} />
           <MenuItem icon="italic" text="orange" onClick={() => {
-            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), '#.rm-bg-orange-200')
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-bg-orange-200')
           }} />
           <MenuItem icon="italic" text="Teal" onClick={() => {
-            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), '#.rm-bg-orange-300')
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-bg-orange-300')
           }} />
         </MenuItem>
 
@@ -42,15 +37,31 @@ const MainMenu: React.FC<MainMenuProps> = () => {
       </MenuItem>
 
       <MenuItem icon="layout" text="Layout">
-        <MenuItem icon="grid" text="Two Columns" onClick={handleGridLayoutTwoColumns} />
-        <MenuItem icon="layout-grid" text="Three Columns" />
-        <MenuItem icon="new-grid-item" text="Four Columns" />
+        <MenuItem icon="grid" text="Two Columns" onClick={() => {
+          appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid2')
+        }} />
+        <MenuItem icon="layout-grid" text="Three Columns" onClick={() => {
+          appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid3')
+        }} />
+        <MenuItem icon="new-grid-item" text="Four Columns" onClick={() => {
+          appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid4')
+        }} />
         <MenuItem icon="new-grid-item" text="Auto Fill">
-          <MenuItem icon="grid" text="Column Width 100px" />
-          <MenuItem icon="grid" text="Column Width 200px" />
-          <MenuItem icon="grid" text="Column Width 300px" />
-          <MenuItem icon="grid" text="Column Width 400px" />
-          <MenuItem icon="grid" text="Column Width 500px" />
+          <MenuItem icon="grid" text="Column Width 100px" onClick={() => {
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid-auto-100')
+          }} />
+          <MenuItem icon="grid" text="Column Width 200px" onClick={() => {
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid-auto-200')
+          }} />
+          <MenuItem icon="grid" text="Column Width 300px" onClick={() => {
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid-auto-300')
+          }} />
+          <MenuItem icon="grid" text="Column Width 400px" onClick={() => {
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid-auto-400')
+          }} />
+          <MenuItem icon="grid" text="Column Width 500px" onClick={() => {
+            appendTextToBlock(window.sessionStorage.getItem('currentHoveredBlockId'), ' #.rm-grid-auto-500')
+          }} />
         </MenuItem>
 
       </MenuItem>

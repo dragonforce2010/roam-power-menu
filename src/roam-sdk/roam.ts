@@ -1,3 +1,5 @@
+import getBlockUidFromTarget from 'roamjs-components/dom/getBlockUidFromTarget'
+
 export function getFocusedBlockUid() {
   return window.roamAlphaAPI.ui.getFocusedBlock()?.['block-uid']
 } 
@@ -18,7 +20,7 @@ export function updateBlockContent(uid: string, newContent: string) {
 
 export function appendTextToBlock(uid: string, appendedText: string) {
   const originContent = getBlockContent(uid)
-  const newContent = originContent + appendTextToBlock
+  const newContent = originContent + appendedText
   updateBlockContent(uid, newContent)
 }
 
@@ -26,7 +28,7 @@ export function appendTextToFocusedBlock(appendedText: string) {
   const uid = getFocusedBlockUid()
   console.log('focused block uid', uid)
   const originContent = getBlockContent(uid)
-  const newContent = originContent + appendTextToBlock
+  const newContent = originContent + appendedText
   updateBlockContent(uid, newContent)
 }
 
@@ -36,7 +38,11 @@ export const getAllBlockUids = () =>
     .map((f) => f[0] as string);
 
 
-export const getBlockIdFromHTMLEleId = (id: string) : string=> {
+export const getBlockIdFromTarget = (target: HTMLElement) : string=> {
+ return getBlockUidFromTarget(target)
+}
+
+export const getBlockIdFromHTMLEleId = (id: string): string => {
   const blockUid = id.substring(id.length - 9, id.length);
   console.log('blockId', blockUid)
   return blockUid

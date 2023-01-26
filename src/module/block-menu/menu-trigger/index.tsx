@@ -7,7 +7,7 @@ interface BlockMenuTriggerProps {
 
 const BlockMenuTrigger: React.FC<BlockMenuTriggerProps> = () => {
   return <div className='block-menu-trigger' >
-    <span><Icon icon={"property"} size={20}></Icon></span>
+    <span><Icon icon={"home"} size={20}></Icon></span>
     <span><Icon icon={"drag-handle-vertical"} size={20}></Icon></span>
   </div>
 }
