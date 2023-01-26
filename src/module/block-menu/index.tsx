@@ -25,16 +25,8 @@ const onMouseEnter = (e: MouseEvent) => {
     return
   }
 
-  // const currentHoveredBlockId = getBlockIdFromTarget(ele)
-  // const currentHoveredBlockId = 'kxOzJNvGv'
-  console.log('e.target:', e.target)
-  // const temp = ele.closest('.rm-block__input')
-  // console.log('close block input ele:', temp)
   const currentHoveredBlockId = getBlockIdFromHTMLEleId(ele.id)
-
-  console.log('ele', ele, 'ele.id currentHoveredBlockId:', currentHoveredBlockId)
   window.sessionStorage.setItem('currentHoveredBlockId', currentHoveredBlockId)
-  console.log('get item from session storage', window.sessionStorage.getItem('currentHoveredBlockId'))
 
   ReactDOM.render(menuTriger, root)
   root.style.position = 'fixed'

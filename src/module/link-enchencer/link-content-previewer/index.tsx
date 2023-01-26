@@ -11,8 +11,6 @@ const onClick = (e: MouseEvent) => {
   const url = (e.target as HTMLAnchorElement).href
   const title = (e.target as HTMLAnchorElement).textContent
   
-  // console.log('e.target', e.target,  'url = ', url, ", title", title)
-
   ReactDOM.render(React.createElement(SideDrawer, { title, url}), root)
   
   document.body.appendChild(root)

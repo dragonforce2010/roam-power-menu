@@ -44,6 +44,5 @@ export const getBlockIdFromTarget = (target: HTMLElement) : string=> {
 
 export const getBlockIdFromHTMLEleId = (id: string): string => {
   const blockUid = id.substring(id.length - 9, id.length);
-  console.log('blockId', blockUid)
   return blockUid
 }
