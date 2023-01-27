@@ -70,7 +70,6 @@ const MainMenu: React.FC<MainMenuProps> = () => {
       <MenuItem icon="new-text-box" text="New text box" />
       <MenuItem icon="new-object" text="New object" />
       <MenuItem icon="new-link" text="New link" />
-      <MenuDivider />
 
       <MenuDivider title="Edit" />
       <MenuItem icon="cut" text="Cut" label="⌘X" />

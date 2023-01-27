@@ -4253,10 +4253,15 @@
     "is-date-object" "^1.0.1"
     "is-symbol" "^1.0.2"
 
-"esbuild-darwin-64@0.14.50":
-  "integrity" "sha512-gDQsCvGnZiJv9cfdO48QqxkRV8oKAXgR2CGp7TdIpccwFdJMHf8hyIJhMW/05b/HJjET/26Us27Jx91BFfEVSA=="
-  "resolved" "https://registry.npmjs.org/esbuild-darwin-64/-/esbuild-darwin-64-0.14.50.tgz"
+"esbuild-darwin-arm64@0.14.50":
+  "integrity" "sha512-36nNs5OjKIb/Q50Sgp8+rYW/PqirRiFN0NFc9hEvgPzNJxeJedktXwzfJSln4EcRFRh5Vz4IlqFRScp+aiBBzA=="
+  "resolved" "https://registry.npmjs.org/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.14.50.tgz"
   "version" "0.14.50"
+
+"esbuild-darwin-arm64@0.15.18":
+  "integrity" "sha512-tKPSxcTJ5OmNb1btVikATJ8NftlyNlc8BVNtyT/UAr62JFOhwHlnoPrhYWz09akBLHI9nElFVfWSTSRsrZiDUA=="
+  "resolved" "https://registry.npmjs.org/esbuild-darwin-arm64/-/esbuild-darwin-arm64-0.15.18.tgz"
+  "version" "0.15.18"
 
 "esbuild@^0.15.8", "esbuild@>=0.13.15":
   "integrity" "sha512-x/R72SmW3sSFRm5zrrIjAhCeQSAWoni3CmHEqfQrZIQTM3lVCdehdwuIqaOtfC2slvpdlLa62GYoN8SxT23m6Q=="

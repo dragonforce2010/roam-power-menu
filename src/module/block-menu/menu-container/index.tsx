@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import { Classes, Popover2 } from "@blueprintjs/popover2";
 import BlockMenuTrigger from '../menu-trigger'
 import MainMenu from '../main-menu'
 import './index.css'
@@ -19,9 +20,20 @@ const MenuContainer: React.FC<MenuContainerProps> = () => {
     setVisual(false)
   }
 
-  return <div className='block-menu-container' onMouseOver={showMainMenu}>
-    <BlockMenuTrigger></BlockMenuTrigger>
-    {visual && (<MainMenu></MainMenu>)}
+  return <div className='block-menu-container'>
+
+    {/* {visual && (<MainMenu></MainMenu>)} */}
+
+    <Popover2
+      interactionKind="hover"
+      popoverClassName={Classes.POPOVER2_CONTENT_SIZING}
+      placement="auto"
+      content={
+        <MainMenu></MainMenu>
+      }
+    >
+      <BlockMenuTrigger></BlockMenuTrigger>
+    </Popover2>
   </div>
 }
 
