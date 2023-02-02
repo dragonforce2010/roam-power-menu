@@ -2,7 +2,6 @@ import getUids from "roamjs-components/dom/getUids";
 import 'roamjs-components/types'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import BlockToolBar from '../../block-tool-bar-deprected/block-tool-bar';
 
 
 let currentUrlFromPaste = '';
@@ -13,7 +12,7 @@ let serviceUrl = 'https://ec2-54-254-24-184.ap-southeast-1.compute.amazonaws.com
 let parseUrlTitileApi = 'parseWebsiteTitleFromUrl'
 // let parseUrlTitileApi = 'parseWebsiteTitleFromUrl'
 
-const pasteListener = (event:ClipboardEvent) => {
+const pasteListener = (event: ClipboardEvent) => {
   const url = event.clipboardData.getData('text');
   if (!CheckUrlFormat(url)) return;
 
@@ -26,12 +25,12 @@ const pasteListener = (event:ClipboardEvent) => {
 
 const CheckUrlFormat = (url: string) => {
   // const matchPattern =
-    // /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
-  const matchPattern = /((?!\]\().)+[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ 
+  // /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\*\+,;=.]+$/;
+  const matchPattern = /((?!\]\().)+[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
   return matchPattern.test(url); // dummy
 };
 
-const parseWebsiteUrlTitle = async (url:string) => {
+const parseWebsiteUrlTitle = async (url: string) => {
   if (!url) return;
 
   const resp = await fetch(`${serviceUrl}/${parseUrlTitileApi}?url=${url}`);
@@ -42,12 +41,12 @@ const parseWebsiteUrlTitle = async (url:string) => {
 };
 
 
-const getBlockContent = (uid:string) => {
+const getBlockContent = (uid: string) => {
   return (window.roamAlphaAPI.q(`[:find (pull ?page [:block/string])
-                      :where [?page :block/uid "${uid}"]  ]`)[0][0] as {string: string}).string;
+                      :where [?page :block/uid "${uid}"]  ]`)[0][0] as { string: string }).string;
 };
 
-const updateCurrentBlockUrlFormat = (urlWithMarkdownFormat:string) => {
+const updateCurrentBlockUrlFormat = (urlWithMarkdownFormat: string) => {
   let uid = window.roamAlphaAPI.ui.getFocusedBlock()?.['block-uid'];
   const originalContent = getBlockContent(uid);
 
@@ -76,7 +75,7 @@ const updateCurrentBlockUrlFormat = (urlWithMarkdownFormat:string) => {
 
 function onunload() {
   window.removeEventListener('paste', pasteListener);
-  
+
 }
 
 function onload() {

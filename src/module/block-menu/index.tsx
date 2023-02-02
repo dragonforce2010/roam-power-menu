@@ -30,7 +30,7 @@ const onMouseEnter = (e: MouseEvent) => {
 
   ReactDOM.render(menuTriger, root)
   root.style.position = 'fixed'
-  root.style.top = ele.getBoundingClientRect().top + 4 + "px" // 4px padding
+  root.style.top = ele.getBoundingClientRect().top + "px" // 
   root.style.right = window.innerWidth - ele.getBoundingClientRect().left + "px"
 
   document.body.appendChild(root)
