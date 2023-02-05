@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
 import { Classes, Popover2 } from "@blueprintjs/popover2";
 import BlockMenuTrigger from '../menu-trigger'
 import MainMenu from '../main-menu'
 import './index.css'
 
-interface MenuContainerProps {
-
-}
+interface MenuContainerProps { }
 
 const MenuContainer: React.FC<MenuContainerProps> = () => {
   const [visual, setVisual] = useState(false)

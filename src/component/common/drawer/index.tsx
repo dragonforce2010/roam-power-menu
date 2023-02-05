@@ -1,5 +1,5 @@
 import { Drawer } from '@blueprintjs/core'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDom from 'react-dom'
 
 interface MyDrawerProps {
@@ -32,14 +32,14 @@ const SideDrawer: React.FC<MyDrawerProps> = ({
   }, [])
 
   return <Drawer
-    title = {title}
+    title={title}
     isCloseButtonShown={false}
     isOpen={isOpen}
     onClose={onClose}
     size={size}
   >
     <div style={{ height: "100%", width: "100%" }}>
-      { error && <div>目标页面不支持iframe加载</div>}
+      {error && <div>目标页面不支持iframe加载</div>}
       {!error && <iframe src={url} style={{ height: "100%", width: "100%", border: "none" }} onError={(err) => {
         setError(true)
         console.log('onerror:', err)

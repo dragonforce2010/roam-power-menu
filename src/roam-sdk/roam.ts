@@ -1,12 +1,10 @@
-import getBlockUidFromTarget from 'roamjs-components/dom/getBlockUidFromTarget'
-
 export function getFocusedBlockUid() {
   return window.roamAlphaAPI.ui.getFocusedBlock()?.['block-uid']
-} 
+}
 
 export function getBlockContent(uid: string) {
   return (window.roamAlphaAPI.q(`[:find (pull ?page [:block/string])
-                      :where [?page :block/uid "${uid}"]  ]`)[0][0] as {string: string}).string;
+                      :where [?page :block/uid "${uid}"]  ]`)[0][0] as { string: string }).string;
 }
 
 export function updateBlockContent(uid: string, newContent: string) {
@@ -37,10 +35,6 @@ export const getAllBlockUids = () =>
     .q(`[:find ?u :where [?e :block/uid ?u] [?e :block/string]]`)
     .map((f) => f[0] as string);
 
-
-export const getBlockIdFromTarget = (target: HTMLElement) : string=> {
- return getBlockUidFromTarget(target)
-}
 
 export const getBlockIdFromHTMLEleId = (id: string): string => {
   const blockUid = id.substring(id.length - 9, id.length);

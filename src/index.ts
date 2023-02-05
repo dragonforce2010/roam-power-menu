@@ -1,6 +1,5 @@
 import linkTitleParser from './module/link-enchencer/link-title-parser'
 import linkContentPreviewer from './module/link-enchencer/link-content-previewer'
-// import blockToolBar from './module/block-tool-bar-deprected'
 import "./module/css-enchencer"
 import blockMenu from './module/block-menu'
 
@@ -10,7 +9,7 @@ function onload() {
   // blockToolBar.onload()
   blockMenu.onload()
 }
-  
+
 function onunload() {
   linkTitleParser.onunload()
   linkContentPreviewer.onunload()

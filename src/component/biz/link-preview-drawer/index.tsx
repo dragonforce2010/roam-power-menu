@@ -1,5 +1,5 @@
 import { Drawer } from '@blueprintjs/core'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDom from 'react-dom'
 import SideDrawer from '../../common/drawer';
 
