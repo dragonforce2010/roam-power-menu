@@ -1,6 +1,14 @@
 {
   // "extends": "./node_modules/roamjs-scripts/default.tsconfig",
   "extends":"./node_modules/roamjs-scripts/default.tsconfig.json",
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["./src", "./power-link-parser"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@": ["./src/*"],
+      "@power-link-parser": ["../roam-power-link-parser/*"],
+      "@modules": ["./src/module/*"]
+    }
+  }
 }

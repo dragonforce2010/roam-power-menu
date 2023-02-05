@@ -1,0 +1,3 @@
+[submodule "power-link-parser"]
+	path = power-link-parser
+	url = git@github.com:dragonforce2010/roam-website-title-parser.git
