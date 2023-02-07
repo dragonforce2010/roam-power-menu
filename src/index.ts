@@ -1,19 +1,19 @@
-import linkTitleParser from './module/link-enchencer/link-title-parser'
-import linkContentPreviewer from './module/link-enchencer/link-content-previewer'
-import "./module/css-enchencer"
+import PowerlinkParser from './module/power-link-parser'
+import linkContentPreviewer from './module/link-content-previewer'
+import PowerCssPack from './module/power-css-pack'
 import blockMenu from './module/block-menu'
 
 function onload() {
-  linkTitleParser.onload()
+  PowerlinkParser.onload()
+  PowerCssPack.onload()
   linkContentPreviewer.onload()
-  // blockToolBar.onload()
   blockMenu.onload()
 }
 
 function onunload() {
-  linkTitleParser.onunload()
+  PowerlinkParser.onunload()
+  PowerCssPack.onunload()
   linkContentPreviewer.onunload()
-  // blockToolBar.onunload()
   blockMenu.onunload()
 }
 
