@@ -4,3 +4,6 @@
 [submodule "roam-power-css-pack"]
 	path = roam-power-css-pack
 	url = https://github.com/dragonforce2010/roam-power-css-pack.git
+[submodule "roam-power-chatgpt"]
+	path = roam-power-chatgpt
+	url = https://github.com/dragonforce2010/roam-power-chatgpt.git

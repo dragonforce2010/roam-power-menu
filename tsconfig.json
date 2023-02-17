@@ -9,6 +9,8 @@
       "@": ["./src/*"],
       "@power-link-parser": ["../roam-power-link-parser/*"],
       "@modules": ["./src/module/*"]
-    }
+    },
+    "jsx": "react",
+    "esModuleInterop": true,  
   }
 }
