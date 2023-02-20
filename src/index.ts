@@ -1,20 +1,24 @@
 import PowerlinkParser from './module/power-link-parser'
-import linkContentPreviewer from './module/link-content-previewer'
 import PowerCssPack from './module/power-css-pack'
+import PowerPreviewer from './module/power-previewer'
 import blockMenu from './module/block-menu'
+import chatgpt from './module/power-chatgpt'
+import powerChatgpt from './module/power-chatgpt'
 
 function onload() {
   PowerlinkParser.onload()
   PowerCssPack.onload()
-  linkContentPreviewer.onload()
+  PowerPreviewer.onload()
   blockMenu.onload()
+  chatgpt.onload()
 }
 
 function onunload() {
   PowerlinkParser.onunload()
   PowerCssPack.onunload()
-  linkContentPreviewer.onunload()
+  PowerPreviewer.onunload()
   blockMenu.onunload()
+  powerChatgpt.onunload()
 }
 
 export default {
