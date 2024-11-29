@@ -2,7 +2,6 @@ import './styles/power-css.css'
 import blockMenu from './block-menu'
 
 function onload() {
-  // PowerlinkParser.onload()
   blockMenu.onload()
 }
 
@@ -11,6 +10,6 @@ function onunload() {
 }
 
 export default {
-  onload: onload,
-  onunload: onunload,
+  onload,
+  onunload,
 }

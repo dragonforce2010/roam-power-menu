@@ -1,6 +1,16 @@
+# Dependencies
 node_modules
+yarn.lock
+package-lock.json
+
+# Build
 dist
+extension.js
+extension.js.LICENSE.txt
+
+# OS
 .DS_Store
 *.log
+
+# Environment
 .env
-extension.js

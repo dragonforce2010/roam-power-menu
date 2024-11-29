@@ -1,7 +1,4 @@
 import React, { useCallback } from 'react'
-import Heading1 from '../../flatten-item-list/heading1'
-import Heading2 from '../../flatten-item-list/heading2'
-import Heading3 from '../../flatten-item-list/heading3'
 
 interface FormatSubmenuProps {
   onClose: () => void;
