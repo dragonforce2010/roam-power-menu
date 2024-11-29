@@ -55,21 +55,23 @@ const MainMenu: React.FC = () => {
     const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
     if (!blockId) return
 
-    // 获取当前块的所有标签
+    // 修改查询以返回数组格式的结果
     const tags = window.roamAlphaAPI.q(`
-      [:find ?tags .
+      [:find [?tags ...]
        :where [?b :block/uid "${blockId}"]
               [?b :block/refs ?r]
-              [?r :node/title ?tags]]`)
+              [?r :node/title ?tags]]`) as string[]
+
+    if (!tags || !Array.isArray(tags)) return
 
     // 过滤出所有 css 相关的标签
-    const cssTags = tags?.filter((tag: string) => tag.startsWith('css-')) || []
+    const cssTags = tags.filter(tag => tag.startsWith('css-'))
 
     // 移除所有 css 标签
-    cssTags.forEach((tag: string) => {
+    cssTags.forEach(tag => {
       window.roamAlphaAPI.data.block.removeTag({
         block: { uid: blockId },
-        tag: tag,
+        tag
       })
     })
   }
