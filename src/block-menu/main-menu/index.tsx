@@ -51,9 +51,40 @@ const MainMenu: React.FC = () => {
     appendTextToBlock(blockId, ` #.css-${styleType}-${value}`)
   }
 
+  const clearAllStyles = () => {
+    const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
+    if (!blockId) return
+
+    // 获取当前块的所有标签
+    const tags = window.roamAlphaAPI.q(`
+      [:find ?tags .
+       :where [?b :block/uid "${blockId}"]
+              [?b :block/refs ?r]
+              [?r :node/title ?tags]]`)
+
+    // 过滤出所有 css 相关的标签
+    const cssTags = tags?.filter((tag: string) => tag.startsWith('css-')) || []
+
+    // 移除所有 css 标签
+    cssTags.forEach((tag: string) => {
+      window.roamAlphaAPI.data.block.removeTag({
+        block: { uid: blockId },
+        tag: tag,
+      })
+    })
+  }
+
   return (
     <div className='main-menu'>
       <Menu className={Classes.ELEVATION_1}>
+        <MenuItem
+          icon="clean"
+          text="Clear All Styles"
+          onClick={clearAllStyles}
+          intent="warning"
+        />
+        <MenuDivider />
+
         {/* 层级样式 */}
         <MenuItem icon="layers" text="Level Styles">
           <MenuItem 
