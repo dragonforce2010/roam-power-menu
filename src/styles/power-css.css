@@ -117,14 +117,6 @@
 [data-tag*=".css-font-family-cursive"] { font-family: cursive !important; }
 [data-tag*=".css-font-family-fantasy"] { font-family: fantasy !important; }
 
-/* 字体大小 */
-[data-tag*=".css-font-12px"] { font-size: 12px !important; }
-[data-tag*=".css-font-14px"] { font-size: 14px !important; }
-[data-tag*=".css-font-16px"] { font-size: 16px !important; }
-[data-tag*=".css-font-18px"] { font-size: 18px !important; }
-[data-tag*=".css-font-20px"] { font-size: 20px !important; }
-[data-tag*=".css-font-24px"] { font-size: 24px !important; }
-
 /* 盒子样式 */
 [data-tag*=".css-box-orange"] {
   border: 2px solid orange;
@@ -191,7 +183,37 @@
 [data-tag*=".css-font-crimson"] { color: #dc143c !important; }
 [data-tag*=".css-font-gold"] { color: #ffd700 !important; }
 
-/* 扩展字体大小 */
+/* 修复 hover 问题：确保图标始终可以点击 */
+.bp4-menu-item > .bp4-icon {
+  z-index: 10;
+  position: relative;
+}
+
+/* 确保菜单项的内容不会覆盖图标 */
+.bp4-menu-item {
+  position: relative;
+  overflow: visible;
+}
+
+/* 调整字体大小时保持图标大小不变 */
+.bp4-icon {
+  font-size: 16px !important;  /* 保持图标大小固定 */
+  min-width: 16px;
+  min-height: 16px;
+}
+
+/* 确保菜单项的点击区域正确 */
+.bp4-menu-item {
+  padding-left: 30px !important;  /* 为图标预留足够空间 */
+}
+
+/* 保持预设字体大小的样式 */
+[data-tag*=".css-font-12px"] { font-size: 12px !important; }
+[data-tag*=".css-font-14px"] { font-size: 14px !important; }
+[data-tag*=".css-font-16px"] { font-size: 16px !important; }
+[data-tag*=".css-font-18px"] { font-size: 18px !important; }
+[data-tag*=".css-font-20px"] { font-size: 20px !important; }
+[data-tag*=".css-font-24px"] { font-size: 24px !important; }
 [data-tag*=".css-font-28px"] { font-size: 28px !important; }
 [data-tag*=".css-font-32px"] { font-size: 32px !important; }
 [data-tag*=".css-font-36px"] { font-size: 36px !important; }
@@ -201,24 +223,4 @@
 [data-tag*=".css-font-medium"] { font-size: 1em !important; }
 [data-tag*=".css-font-large"] { font-size: 1.2em !important; }
 [data-tag*=".css-font-x-large"] { font-size: 1.5em !important; }
-[data-tag*=".css-font-xx-large"] { font-size: 2em !important; }
-
-/* 支持自定义字体大小 */
-[data-tag*=".css-font-"] {
-  font-size: attr(data-tag-size) !important;
-}
-
-/* 确保现有的固定字体大小样式优先级更高 */
-[data-tag*=".css-font-12px"],
-[data-tag*=".css-font-14px"],
-[data-tag*=".css-font-16px"],
-[data-tag*=".css-font-18px"],
-[data-tag*=".css-font-20px"],
-[data-tag*=".css-font-24px"],
-[data-tag*=".css-font-28px"],
-[data-tag*=".css-font-32px"],
-[data-tag*=".css-font-36px"],
-[data-tag*=".css-font-40px"],
-[data-tag*=".css-font-48px"] {
-  font-size: attr(data-tag-size) !important;
-} 
+[data-tag*=".css-font-xx-large"] { font-size: 2em !important; } 

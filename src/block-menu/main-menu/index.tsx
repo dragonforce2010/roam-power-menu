@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Classes, Icon, Menu, MenuDivider, MenuItem, NumericInput, Popover, Position } from '@blueprintjs/core'
+import React from 'react'
+import { Classes, Icon, Menu, MenuDivider, MenuItem } from '@blueprintjs/core'
 import { appendTextToBlock } from '../../roam-sdk/roam'
 import '../../styles/power-css.css'
 
@@ -157,39 +157,11 @@ const clearCurrentBlockStyles = async () => {
   }
 }
 
-const CustomFontSizeInput: React.FC<{ onApply: (size: number) => void }> = ({ onApply }) => {
-  const [fontSize, setFontSize] = useState<number>(16)
-
-  return (
-    <div style={{ padding: '10px' }}>
-      <NumericInput
-        min={1}
-        max={200}
-        value={fontSize}
-        onValueChange={(value) => setFontSize(value)}
-        placeholder="Enter font size"
-        style={{ width: '100px' }}
-      />
-      <button
-        className={Classes.BUTTON}
-        onClick={() => onApply(fontSize)}
-        style={{ marginLeft: '5px' }}
-      >
-        Apply
-      </button>
-    </div>
-  )
-}
-
 const MainMenu: React.FC = () => {
   const applyStyle = (styleType: string, value: string) => {
     const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
     if (!blockId) return
     appendTextToBlock(blockId, ` #.css-${styleType}-${value}`)
-  }
-
-  const handleCustomFontSize = (size: number) => {
-    applyStyle('font', `${size}px`)
   }
 
   return (
@@ -270,7 +242,6 @@ const MainMenu: React.FC = () => {
           </MenuItem>
 
           <MenuItem icon="text-highlight" text="Font Size">
-            {/* 预设字体大小 */}
             {FONT_SIZES.map(size => (
               <MenuItem 
                 key={size.tag}
@@ -278,18 +249,6 @@ const MainMenu: React.FC = () => {
                 onClick={() => applyStyle('font', size.tag)}
               />
             ))}
-            <MenuDivider />
-            {/* 自定义字体大小 */}
-            <Popover
-              content={<CustomFontSizeInput onApply={handleCustomFontSize} />}
-              position={Position.RIGHT}
-              minimal={true}
-            >
-              <MenuItem 
-                icon="numerical"
-                text="Custom Size..."
-              />
-            </Popover>
           </MenuItem>
         </MenuItem>
 
