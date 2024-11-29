@@ -165,4 +165,60 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 10px;
+}
+
+/* 扩展字体家族 */
+[data-tag*=".css-font-family-arial"] { font-family: Arial, sans-serif !important; }
+[data-tag*=".css-font-family-times-new-roman"] { font-family: "Times New Roman", Times, serif !important; }
+[data-tag*=".css-font-family-courier-new"] { font-family: "Courier New", Courier, monospace !important; }
+[data-tag*=".css-font-family-georgia"] { font-family: Georgia, serif !important; }
+[data-tag*=".css-font-family-verdana"] { font-family: Verdana, sans-serif !important; }
+[data-tag*=".css-font-family-helvetica"] { font-family: Helvetica, Arial, sans-serif !important; }
+[data-tag*=".css-font-family-palatino"] { font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif !important; }
+[data-tag*=".css-font-family-garamond"] { font-family: Garamond, serif !important; }
+[data-tag*=".css-font-family-bookman"] { font-family: "Bookman Old Style", serif !important; }
+[data-tag*=".css-font-family-comic-sans"] { font-family: "Comic Sans MS", cursive !important; }
+
+/* 扩展字体颜色 */
+[data-tag*=".css-font-red"] { color: #ff0000 !important; }
+[data-tag*=".css-font-pink"] { color: #ff69b4 !important; }
+[data-tag*=".css-font-coral"] { color: #ff7f50 !important; }
+[data-tag*=".css-font-brown"] { color: #a52a2a !important; }
+[data-tag*=".css-font-gray"] { color: #808080 !important; }
+[data-tag*=".css-font-black"] { color: #000000 !important; }
+[data-tag*=".css-font-indigo"] { color: #4b0082 !important; }
+[data-tag*=".css-font-violet"] { color: #ee82ee !important; }
+[data-tag*=".css-font-crimson"] { color: #dc143c !important; }
+[data-tag*=".css-font-gold"] { color: #ffd700 !important; }
+
+/* 扩展字体大小 */
+[data-tag*=".css-font-28px"] { font-size: 28px !important; }
+[data-tag*=".css-font-32px"] { font-size: 32px !important; }
+[data-tag*=".css-font-36px"] { font-size: 36px !important; }
+[data-tag*=".css-font-40px"] { font-size: 40px !important; }
+[data-tag*=".css-font-48px"] { font-size: 48px !important; }
+[data-tag*=".css-font-small"] { font-size: 0.8em !important; }
+[data-tag*=".css-font-medium"] { font-size: 1em !important; }
+[data-tag*=".css-font-large"] { font-size: 1.2em !important; }
+[data-tag*=".css-font-x-large"] { font-size: 1.5em !important; }
+[data-tag*=".css-font-xx-large"] { font-size: 2em !important; }
+
+/* 支持自定义字体大小 */
+[data-tag*=".css-font-"] {
+  font-size: attr(data-tag-size) !important;
+}
+
+/* 确保现有的固定字体大小样式优先级更高 */
+[data-tag*=".css-font-12px"],
+[data-tag*=".css-font-14px"],
+[data-tag*=".css-font-16px"],
+[data-tag*=".css-font-18px"],
+[data-tag*=".css-font-20px"],
+[data-tag*=".css-font-24px"],
+[data-tag*=".css-font-28px"],
+[data-tag*=".css-font-32px"],
+[data-tag*=".css-font-36px"],
+[data-tag*=".css-font-40px"],
+[data-tag*=".css-font-48px"] {
+  font-size: attr(data-tag-size) !important;
 } 

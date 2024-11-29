@@ -1,5 +1,5 @@
-import React from 'react'
-import { Classes, Icon, Menu, MenuDivider, MenuItem } from '@blueprintjs/core'
+import React, { useState } from 'react'
+import { Classes, Icon, Menu, MenuDivider, MenuItem, NumericInput, Popover, Position } from '@blueprintjs/core'
 import { appendTextToBlock } from '../../roam-sdk/roam'
 import '../../styles/power-css.css'
 
@@ -19,6 +19,16 @@ const COLORS: StyleOption[] = [
   { label: 'Orange', tag: 'orange' },
   { label: 'Purple', tag: 'purple' },
   { label: 'Maroon', tag: 'maroon' },
+  { label: 'Red', tag: 'red' },
+  { label: 'Pink', tag: 'pink' },
+  { label: 'Coral', tag: 'coral' },
+  { label: 'Brown', tag: 'brown' },
+  { label: 'Gray', tag: 'gray' },
+  { label: 'Black', tag: 'black' },
+  { label: 'Indigo', tag: 'indigo' },
+  { label: 'Violet', tag: 'violet' },
+  { label: 'Crimson', tag: 'crimson' },
+  { label: 'Gold', tag: 'gold' },
 ]
 
 const FONT_FAMILIES: StyleOption[] = [
@@ -27,6 +37,16 @@ const FONT_FAMILIES: StyleOption[] = [
   { label: 'Monospace', tag: 'monospace' },
   { label: 'Cursive', tag: 'cursive' },
   { label: 'Fantasy', tag: 'fantasy' },
+  { label: 'Arial', tag: 'arial' },
+  { label: 'Times New Roman', tag: 'times-new-roman' },
+  { label: 'Courier New', tag: 'courier-new' },
+  { label: 'Georgia', tag: 'georgia' },
+  { label: 'Verdana', tag: 'verdana' },
+  { label: 'Helvetica', tag: 'helvetica' },
+  { label: 'Palatino', tag: 'palatino' },
+  { label: 'Garamond', tag: 'garamond' },
+  { label: 'Bookman', tag: 'bookman' },
+  { label: 'Comic Sans MS', tag: 'comic-sans' },
 ]
 
 const FONT_SIZES: StyleOption[] = [
@@ -36,6 +56,16 @@ const FONT_SIZES: StyleOption[] = [
   { label: '18px', tag: '18px' },
   { label: '20px', tag: '20px' },
   { label: '24px', tag: '24px' },
+  { label: '28px', tag: '28px' },
+  { label: '32px', tag: '32px' },
+  { label: '36px', tag: '36px' },
+  { label: '40px', tag: '40px' },
+  { label: '48px', tag: '48px' },
+  { label: 'Small', tag: 'small' },
+  { label: 'Medium', tag: 'medium' },
+  { label: 'Large', tag: 'large' },
+  { label: 'X-Large', tag: 'x-large' },
+  { label: 'XX-Large', tag: 'xx-large' },
 ]
 
 const BORDERS: StyleOption[] = [
@@ -127,11 +157,39 @@ const clearCurrentBlockStyles = async () => {
   }
 }
 
+const CustomFontSizeInput: React.FC<{ onApply: (size: number) => void }> = ({ onApply }) => {
+  const [fontSize, setFontSize] = useState<number>(16)
+
+  return (
+    <div style={{ padding: '10px' }}>
+      <NumericInput
+        min={1}
+        max={200}
+        value={fontSize}
+        onValueChange={(value) => setFontSize(value)}
+        placeholder="Enter font size"
+        style={{ width: '100px' }}
+      />
+      <button
+        className={Classes.BUTTON}
+        onClick={() => onApply(fontSize)}
+        style={{ marginLeft: '5px' }}
+      >
+        Apply
+      </button>
+    </div>
+  )
+}
+
 const MainMenu: React.FC = () => {
   const applyStyle = (styleType: string, value: string) => {
     const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
     if (!blockId) return
     appendTextToBlock(blockId, ` #.css-${styleType}-${value}`)
+  }
+
+  const handleCustomFontSize = (size: number) => {
+    applyStyle('font', `${size}px`)
   }
 
   return (
@@ -212,6 +270,7 @@ const MainMenu: React.FC = () => {
           </MenuItem>
 
           <MenuItem icon="text-highlight" text="Font Size">
+            {/* 预设字体大小 */}
             {FONT_SIZES.map(size => (
               <MenuItem 
                 key={size.tag}
@@ -219,6 +278,18 @@ const MainMenu: React.FC = () => {
                 onClick={() => applyStyle('font', size.tag)}
               />
             ))}
+            <MenuDivider />
+            {/* 自定义字体大小 */}
+            <Popover
+              content={<CustomFontSizeInput onApply={handleCustomFontSize} />}
+              position={Position.RIGHT}
+              minimal={true}
+            >
+              <MenuItem 
+                icon="numerical"
+                text="Custom Size..."
+              />
+            </Popover>
           </MenuItem>
         </MenuItem>
 
