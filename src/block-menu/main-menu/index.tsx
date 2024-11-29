@@ -94,6 +94,39 @@ const clearAllStyles = async () => {
   }
 }
 
+// 添加清除单个块样式的函数
+const clearCurrentBlockStyles = async () => {
+  const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
+  console.log('Current block ID:', blockId)
+  if (!blockId) return
+
+  try {
+    // 1. 获取当前块的内容
+    const blockInfo = window.roamAlphaAPI.pull(
+      '[*]',
+      `[:block/uid "${blockId}"]`
+    )
+    
+    if (!blockInfo || !blockInfo[':block/string']) return
+    
+    // 2. 获取当前文本内容并移除所有 CSS 标签
+    const currentText = blockInfo[':block/string']
+    const newText = currentText.replace(/#\.css-[^\s]+/g, '').trim()
+    
+    // 3. 更新块的内容
+    await window.roamAlphaAPI.data.block.update({
+      block: {
+        uid: blockId,
+        string: newText
+      }
+    })
+    
+    console.log('Successfully cleared current block styles')
+  } catch (error) {
+    console.error('Error clearing current block styles:', error)
+  }
+}
+
 const MainMenu: React.FC = () => {
   const applyStyle = (styleType: string, value: string) => {
     const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
@@ -106,9 +139,15 @@ const MainMenu: React.FC = () => {
       <Menu className={Classes.ELEVATION_1}>
         <MenuItem
           icon="clean"
+          text="Clear Current Block Style"
+          onClick={clearCurrentBlockStyles}
+          intent="warning"
+        />
+        <MenuItem
+          icon="clean-all"
           text="Clear All Styles (Including Children)"
           onClick={clearAllStyles}
-          intent="warning"
+          intent="danger"
         />
         <MenuDivider />
 
