@@ -44,6 +44,56 @@ const BORDERS: StyleOption[] = [
   { label: 'Double Border', tag: 'border-3' },
 ]
 
+const clearAllStyles = async () => {
+  const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
+  console.log('Current block ID:', blockId)
+  if (!blockId) return
+
+  const clearStylesForBlock = async (uid: string) => {
+    // 1. 获取当前块的内容
+    const blockInfo = window.roamAlphaAPI.pull(
+      '[*]',
+      `[:block/uid "${uid}"]`
+    )
+    
+    if (!blockInfo || !blockInfo[':block/string']) return
+    // 2. 获取当前文本内容并移除所有 CSS 标签
+    const currentText = blockInfo[':block/string']
+    const newText = currentText.replace(/#\.css-[^\s]+/g, '').trim()
+    
+    // 3. 更新块的内容
+    await window.roamAlphaAPI.data.block.update({
+      block: {
+        uid: uid,
+        string: newText
+      }
+    })
+
+    // 4. 获取子块
+    const children = window.roamAlphaAPI.q(`
+      [:find [?child_uid ...]
+       :where 
+        [?b :block/uid "${uid}"]
+        [?b :block/children ?c]
+        [?c :block/uid ?child_uid]]
+    `) as string[]
+
+    // 5. 递归处理子块
+    if (children && Array.isArray(children)) {
+      for (const childUid of children) {
+        await clearStylesForBlock(childUid)
+      }
+    }
+  }
+
+  try {
+    await clearStylesForBlock(blockId)
+    console.log('Successfully cleared all styles')
+  } catch (error) {
+    console.error('Error clearing styles:', error)
+  }
+}
+
 const MainMenu: React.FC = () => {
   const applyStyle = (styleType: string, value: string) => {
     const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
@@ -51,37 +101,12 @@ const MainMenu: React.FC = () => {
     appendTextToBlock(blockId, ` #.css-${styleType}-${value}`)
   }
 
-  const clearAllStyles = () => {
-    const blockId = window.sessionStorage.getItem('currentHoveredBlockId')
-    if (!blockId) return
-
-    // 修改查询以返回数组格式的结果
-    const tags = window.roamAlphaAPI.q(`
-      [:find [?tags ...]
-       :where [?b :block/uid "${blockId}"]
-              [?b :block/refs ?r]
-              [?r :node/title ?tags]]`) as string[]
-
-    if (!tags || !Array.isArray(tags)) return
-
-    // 过滤出所有 css 相关的标签
-    const cssTags = tags.filter(tag => tag.startsWith('css-'))
-
-    // 移除所有 css 标签
-    cssTags.forEach(tag => {
-      window.roamAlphaAPI.data.block.removeTag({
-        block: { uid: blockId },
-        tag
-      })
-    })
-  }
-
   return (
     <div className='main-menu'>
       <Menu className={Classes.ELEVATION_1}>
         <MenuItem
           icon="clean"
-          text="Clear All Styles"
+          text="Clear All Styles (Including Children)"
           onClick={clearAllStyles}
           intent="warning"
         />
