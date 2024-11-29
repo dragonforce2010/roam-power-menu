@@ -202,7 +202,7 @@ const MainMenu: React.FC = () => {
           intent="warning"
         />
         <MenuItem
-          icon="clean-all"
+          icon="trash"
           text="Clear All Styles (Including Children)"
           onClick={clearAllStyles}
           intent="danger"
