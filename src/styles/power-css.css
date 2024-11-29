@@ -1,0 +1,168 @@
+/* 背景色 */
+[data-tag*=".css-bg-orange-100"] {
+  background-color: rgba(255, 165, 0, 0.1) !important;
+}
+[data-tag*=".css-bg-orange-200"] {
+  background-color: rgba(255, 165, 0, 0.2) !important;
+}
+[data-tag*=".css-bg-orange-300"] {
+  background-color: rgba(255, 165, 0, 0.3) !important;
+}
+
+/* 字体颜色 */
+[data-tag*=".css-font-orange"] {
+  color: orange !important;
+}
+[data-tag*=".css-font-blue"] {
+  color: blue !important;
+}
+[data-tag*=".css-font-teal"] {
+  color: teal !important;
+}
+
+/* 字体大小 */
+[data-tag*=".css-font-14px"] {
+  font-size: 14px !important;
+}
+[data-tag*=".css-font-16px"] {
+  font-size: 16px !important;
+}
+[data-tag*=".css-font-18px"] {
+  font-size: 18px !important;
+}
+
+/* 网格布局 */
+[data-tag*=".css-grid2"] > div {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+[data-tag*=".css-grid3"] > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+[data-tag*=".css-grid4"] > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* 自动布局 */
+[data-tag*=".css-grid-auto-100"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+[data-tag*=".css-grid-auto-200"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+/* 背景层级样式 */
+[data-tag*=".css-level-bg"] > div > div {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+[data-tag*=".css-level-bg"] > div > div > div > div {
+  background-color: rgba(240, 240, 240, 0.95) !important;
+}
+[data-tag*=".css-level-bg"] > div > div > div > div > div > div {
+  background-color: rgba(225, 225, 225, 0.95) !important;
+}
+[data-tag*=".css-level-bg"] > div > div > div > div > div > div > div > div {
+  background-color: rgba(210, 210, 210, 0.95) !important;
+}
+
+/* 字体颜色层级 */
+[data-tag*=".css-level-color"] > div > div {
+  color: #000000 !important;
+}
+[data-tag*=".css-level-color"] > div > div > div > div {
+  color: #1a1a1a !important;
+}
+[data-tag*=".css-level-color"] > div > div > div > div > div > div {
+  color: #333333 !important;
+}
+
+/* 边框样式 */
+[data-tag*=".css-border-1"] {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+}
+
+[data-tag*=".css-border-2"] {
+  border: 2px dashed #666;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 5px;
+}
+
+[data-tag*=".css-border-3"] {
+  border: 3px double #999;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* 字体样式 */
+[data-tag*=".css-font-family-serif"] { font-family: serif !important; }
+[data-tag*=".css-font-family-sans-serif"] { font-family: sans-serif !important; }
+[data-tag*=".css-font-family-monospace"] { font-family: monospace !important; }
+[data-tag*=".css-font-family-cursive"] { font-family: cursive !important; }
+[data-tag*=".css-font-family-fantasy"] { font-family: fantasy !important; }
+
+/* 字体大小 */
+[data-tag*=".css-font-12px"] { font-size: 12px !important; }
+[data-tag*=".css-font-14px"] { font-size: 14px !important; }
+[data-tag*=".css-font-16px"] { font-size: 16px !important; }
+[data-tag*=".css-font-18px"] { font-size: 18px !important; }
+[data-tag*=".css-font-20px"] { font-size: 20px !important; }
+[data-tag*=".css-font-24px"] { font-size: 24px !important; }
+
+/* 盒子样式 */
+[data-tag*=".css-box-orange"] {
+  border: 2px solid orange;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+[data-tag*=".css-box-orange-right"] {
+  text-align: right;
+}
+
+[data-tag*=".css-box-orange-center"] {
+  text-align: center;
+}
+
+/* 网格布局扩展 */
+[data-tag*=".css-grid5"] > div {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+[data-tag*=".css-grid6"] > div {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+/* 自动布局扩展 */
+[data-tag*=".css-grid-auto-400"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 10px;
+}
+
+[data-tag*=".css-grid-auto-500"] > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 10px;
+} 

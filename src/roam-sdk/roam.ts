@@ -33,10 +33,35 @@ export function appendTextToFocusedBlock(appendedText: string) {
 export const getAllBlockUids = () =>
   window.roamAlphaAPI
     .q(`[:find ?u :where [?e :block/uid ?u] [?e :block/string]]`)
-    .map((f) => f[0] as string);
+    .map((f: any) => f[0] as string);
 
 
 export const getBlockIdFromHTMLEleId = (id: string): string => {
   const blockUid = id.substring(id.length - 9, id.length);
   return blockUid
 }
+
+export const waitForRoamLoad = () => {
+  return new Promise<void>((resolve) => {
+    if (window.roamAlphaAPI) {
+      resolve();
+      return;
+    }
+    
+    const observer = new MutationObserver((mutations) => {
+      if (window.roamAlphaAPI) {
+        observer.disconnect();
+        resolve();
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+};
+
+export const onRouteChange = (f: (path: string) => void) => {
+  // 已有代码...
+};

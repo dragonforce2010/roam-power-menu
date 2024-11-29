@@ -2,7 +2,7 @@ import React from 'react'
 import "./index.css"
 import ReactDOM from 'react-dom'
 import MenuContainer from './menu-container'
-import { getBlockIdFromHTMLEleId } from '../../roam-sdk/roam'
+import { getBlockIdFromHTMLEleId } from '../roam-sdk/roam'
 
 let lastEle: HTMLElement
 let lastRoot: HTMLElement
